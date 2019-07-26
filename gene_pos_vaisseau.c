@@ -2,6 +2,7 @@
 #include "gene_tunnel.h"
 int pos_vaisseau;
 char vaisseau;
+int verif;
 
 void init_vaisseau(){
 	modele.tab_decor[modele.indice_pos_vaisseau].data[pos_vaisseau] =  vaisseau;
@@ -79,7 +80,9 @@ int vaisseau_bouge(){
 			input[0] = getchar();
 			input[1] = getchar();
 			if(input[1] == 68){
-
+				if((modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau -1] == '/') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau -1] == '|') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau -1] == '\\') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau -1] == 'o')){
+					verif = 0;
+				}
 				pos_vaisseau--;
 				if(pos_vaisseau <= 0){
 					pos_vaisseau = 1;
@@ -94,6 +97,9 @@ int vaisseau_bouge(){
 				modele.vaisseau_pos_evenement = 1;
 			}
 		else if(input[1] == 67){
+			if((modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau + 1] == '/') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau + 1] == '|') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau + 1] == '\\') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau + 1] == 'o')){
+				verif = 0;
+			}
 			pos_vaisseau++;
 			if(pos_vaisseau >= sizeof(modele.tab_decor[0].data) ){
 				pos_vaisseau = sizeof(modele.tab_decor[0].data) - 1;
@@ -108,6 +114,9 @@ int vaisseau_bouge(){
 			modele.vaisseau_pos_evenement = 1;
 		}
 		else if(input[1] == 66){
+			if((modele.tab_decor[modele.indice_pos_vaisseau + 2].data[pos_vaisseau] == '/') || (modele.tab_decor[modele.indice_pos_vaisseau + 2].data[pos_vaisseau] == '|') || (modele.tab_decor[modele.indice_pos_vaisseau + 2].data[pos_vaisseau] == '\\') || (modele.tab_decor[modele.indice_pos_vaisseau + 2].data[pos_vaisseau] == 'o')){
+				verif = 0;
+			}
 			modele.indice_pos_vaisseau++;
 			if(modele.indice_pos_vaisseau >= NB_LIGNE_DECOR){
 				modele.indice_pos_vaisseau = 0;
@@ -119,6 +128,9 @@ int vaisseau_bouge(){
 			modele.vaisseau_pos_evenement = 1;
 		}
 		else if(input[1] == 65){
+			if((modele.tab_decor[modele.indice_pos_vaisseau].data[pos_vaisseau] == '/') || (modele.tab_decor[modele.indice_pos_vaisseau].data[pos_vaisseau] == '|') || (modele.tab_decor[modele.indice_pos_vaisseau].data[pos_vaisseau] == '\\') || (modele.tab_decor[modele.indice_pos_vaisseau].data[pos_vaisseau] == 'o')){
+				verif = 0;
+			}
 			modele.indice_pos_vaisseau--;
 			if(modele.indice_pos_vaisseau <= 0){
 				modele.indice_pos_vaisseau = 1;
@@ -132,6 +144,9 @@ int vaisseau_bouge(){
 	}
 }
 else{
+	if((modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau] == '/') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau] == '|') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau] == '\\') || (modele.tab_decor[modele.indice_pos_vaisseau + 1].data[pos_vaisseau] == 'o')){
+		verif = 0;
+	}
 }
 return 0;
 }

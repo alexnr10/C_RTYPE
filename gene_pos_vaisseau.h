@@ -12,6 +12,7 @@
 
 extern int pos_vaisseau;
 extern char vaisseau;
+extern int verif;
 //Définition des variables propres au fichier
 //extern char ligne[105];
 

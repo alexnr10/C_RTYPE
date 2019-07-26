@@ -10,9 +10,11 @@ int main(void)
     // 5: retirer: | + | + | + | + \0
 	stdin_set(1);
 	disable_echo();
+	char reponse;
     int total_nb_espace = sizeof(ligne.data) - 5;
 	vaisseau = '*';
 	asteroide = 'o';
+	verif = 1;
     pos_vaisseau = sizeof(ligne.data) / 2;
     longueur_tab_gauche_paroi_gauche = (5 * total_nb_espace) / 12;
     longueur_tab_droite_paroi_droite = (5 * total_nb_espace) / 12;
@@ -68,7 +70,12 @@ int main(void)
 //            }
 //        }
 //        while (is_ok == 0 && is_ok1 == 0);
-    } while (1);
-    printf("¡¡¡PERDIDO!!! PUEDES HACERLO DE NUEVO ;)");
+    } while (verif);
+    printf("                             GAME OVER ! TRY AGAIN ?\n");
+    system("stty echo\n");
+    scanf("%s", &reponse);
+    if(strcmp(&reponse, "yes") == 0){
+    	system("./rtype\n");
+    }
     return 0;
 }
